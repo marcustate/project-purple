@@ -1,4 +1,32 @@
 form.signup,
 form.login {
-  margin-top: 50px;
+	margin-top: 50px;
 }
+
+body {
+	background-color: #18111b;
+}
+
+nav {
+	background-color: #3d1d4a;
+}
+
+.brand-name {
+	font-size: 25px;
+}
+
+#logout-button:hover {
+	border: transparent;
+	background-color: #18111b;
+	border-color: white;
+	border: solid 1px white;
+	/* text-decoration: none; */
+	color: white;
+}
+
+#logout-button:focus {
+	text-decoration: none;
+	color: white;
+	background-color: #18111b;
+}
+/* hover:border-transparent hover:text-teal-500 hover:bg-white  */
