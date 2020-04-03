@@ -1,6 +1,6 @@
 // Requiring our models and passport as we've configured it
-var db = require("../models");
-var passport = require("../config/passport");
+const db = require("../models");
+const passport = require("../config/passport");
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -49,5 +49,85 @@ module.exports = function(app) {
         id: req.user.id
       });
     }
+  });
+  // Creates a Thread
+  app.post("/api/new", (req, res) => {
+    Thread.create({
+      topic: req.body.topic,
+      userName: req.body.userName,
+      author: req.body.author
+    }).then(function(results) {
+      res.json(results);
+    });
+  });
+  // Get thread
+  app.get("/thread", (req, res) => {
+    Thread.findAll({}, (err, thread) => {
+      res.send(thread);
+    });
+  });
+  // get author of thread
+  app.get("/api/author:author", (req, res) => {
+    Thread.findAll({
+      where: {
+        author: req.params.author
+      }
+    }).then(results => {
+      res.json(results);
+    });
+  });
+
+  app.get("api/topic/:topic", (req, res) => {
+    Thread.findAll({
+      where: {
+        topic: req.params.topic
+      }
+    }).then(results => {
+      res.json(results);
+    });
+  });
+  app.get("/api/userName/:userName", (req, res) => {
+    Thread.findAll({
+      where: {
+        userName: req.params.userName
+      }
+    }).then(results => {
+      res.json(results);
+    });
+  });
+  app.post("/api/new", (req, res) => {
+    Message.create({
+      body: req.body.body,
+      author: req.body.author
+    }).then(results => {
+      res.json(results);
+    });
+  });
+  app.get("/api/author:author", (req, res) => {
+    Message.findAll({
+      where: {
+        author: req.params.author
+      }
+    }).then(results => {
+      res.json(results);
+    });
+  });
+  app.get("/api/body:body", (req, res) => {
+    Message.findAll({
+      where: {
+        body: req.params.body
+      }
+    }).then(results => {
+      res.json(results);
+    });
+  });
+  app.delete("/api/thread/:userName", (req, res) => {
+    Thread.destroy({
+      where: {
+        userName: req.params.userName
+      }
+    }).then(() => {
+      res.end();
+    });
   });
 };
