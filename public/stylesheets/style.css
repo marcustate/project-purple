@@ -5,6 +5,7 @@ form.login {
 
 body {
 	background-color: #18111b;
+	color: white;
 }
 
 nav {
@@ -13,20 +14,59 @@ nav {
 
 .brand-name {
 	font-size: 25px;
+	font-family: "Ultra", serif;
 }
 
-#logout-button:hover {
+.my-button {
+	font-family: "Jua", sans-serif;
+	border-radius: 70px;
+}
+
+.my-button:hover {
 	border: transparent;
 	background-color: #18111b;
 	border-color: white;
 	border: solid 1px white;
-	/* text-decoration: none; */
+	text-decoration: none;
 	color: white;
 }
 
-#logout-button:focus {
+.my-button:focus {
 	text-decoration: none;
 	color: white;
 	background-color: #18111b;
+	outline: 0;
 }
-/* hover:border-transparent hover:text-teal-500 hover:bg-white  */
+
+.page-title {
+	color: white;
+	font-size: 25px;
+	font-family: "Jua", sans-serif;
+	margin-top: 50px;
+	background-color: #3d1d4a;
+	padding: 15px 0 15px 20px;
+	border-radius: 70px;
+}
+
+.stage {
+	color: white;
+	font-size: 25px;
+	font-family: "Jua", sans-serif;
+	margin-top: 50px;
+	background-color: #3d1d4a;
+	padding: 15px 10px 15px 10px;
+	border-radius: 70px;
+}
+
+#new-thread-button {
+	/* border: solid 2px #435b25; */
+	padding: 0;
+	margin: 0;
+	border-radius: 70px;
+}
+
+.welcome {
+	border-radius: 70px;
+	padding: 0;
+	margin: 0;
+}
