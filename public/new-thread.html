@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>New Thread - plumm.it</title>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link
+			rel="stylesheet"
+			href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css"
+		/>
+		<link
+			href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+			rel="stylesheet"
+        />
+        <link href="https://fonts.googleapis.com/css2?family=Jua&family=Ultra&display=swap" rel="stylesheet">
+        <link rel="icon" href="img/plum.png">
+		<link href="stylesheets/style.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<nav
+			class="flex items-center justify-between flex-wrap p-0"
+		>
+			<div class="flex items-center text-white mr-6">
+                <img src="img/plum.png" class="fill-current"
+                width="95"
+                height="95"
+                viewBox="0 0 54 54">
+				<span class="brand-name"
+					>plumm.it</span
+				>
+		</nav>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 col-md-offset-3">
+					<h2 class="page-title">new thread</h2>
+					<form class="signup">
+						<div class="form-group">
+							<label for="exampleInputEmail1"
+								>Title</label
+							>
+							<input
+								type="email"
+								class="form-control"
+								id="email-input"
+								placeholder="Email"
+							/>
+						</div>
+						<div class="form-group">
+							<label for="exampleInputPassword1">Body</label>
+							<input
+								type="password"
+								class="form-control"
+								id="password-input"
+								placeholder="Password"
+							/>
+						</div>
+						<div
+							style="display: none"
+							id="alert"
+							class="alert alert-danger"
+							role="alert"
+						>
+							<span
+								class="glyphicon glyphicon-exclamation-sign"
+								aria-hidden="true"
+							></span>
+							<span class="sr-only">Error:</span>
+							<span class="msg"></span>
+						</div>
+						<button type="submit" class="btn btn-default">
+							Create
+						</button>
+					</form>
+
+				</div>
+			</div>
+		</div>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script type="text/javascript" src="js/new-thread.js.js"></script>
+	</body>
+</html>
