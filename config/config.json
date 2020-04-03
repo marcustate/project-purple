@@ -2,10 +2,14 @@
   "development": {
     "username": "root",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "password": "",
 =======
     "password": null,
 >>>>>>> 03959af00ff8272e9f016dda55db36c533c12b06
+=======
+    "password": null,
+>>>>>>> a7501b440ce86cf4024402cb5354b067230cb45c
     "database": "forum_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
@@ -13,10 +17,14 @@
   "test": {
     "username": "root",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "password": "",
 =======
     "password": null,
 >>>>>>> 03959af00ff8272e9f016dda55db36c533c12b06
+=======
+    "password": null,
+>>>>>>> a7501b440ce86cf4024402cb5354b067230cb45c
     "database": "forum_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
@@ -24,10 +32,14 @@
   "production": {
     "username": "root",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "password": "",
 =======
     "password": null,
 >>>>>>> 03959af00ff8272e9f016dda55db36c533c12b06
+=======
+    "password": null,
+>>>>>>> a7501b440ce86cf4024402cb5354b067230cb45c
     "database": "forum_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
