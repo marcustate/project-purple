@@ -1,21 +1,33 @@
 {
   "development": {
     "username": "root",
+<<<<<<< HEAD
     "password": "",
+=======
+    "password": null,
+>>>>>>> 03959af00ff8272e9f016dda55db36c533c12b06
     "database": "forum_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
+<<<<<<< HEAD
     "password": "",
+=======
+    "password": null,
+>>>>>>> 03959af00ff8272e9f016dda55db36c533c12b06
     "database": "forum_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "production": {
     "username": "root",
+<<<<<<< HEAD
     "password": "",
+=======
+    "password": null,
+>>>>>>> 03959af00ff8272e9f016dda55db36c533c12b06
     "database": "forum_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
