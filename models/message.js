@@ -1,12 +1,20 @@
-module.exports = (sequelize, DataTypes) => {
-    const Message = sequelize.define('Message', {
-      text: DataTypes.STRING,
-      UserId: DataTypes.INTEGER,
-      authorId: DataTypes.INTEGER
-    }, {});
-    Message.associate = function (models) {
-      Message.belongsTo(models.Restaurant)
-      Message.belongsTo(models.User)
-    };
-    return Message;
-  };
+module.exports = function(sequelize, DataTypes) {
+  var Message = sequelize.define("Message", {
+    // mirror Message with "Message"
+    author: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1]
+      }
+    },
+    body: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+      validate: {
+        len: [1]
+      }
+    }
+  });
+  return Message;
+};
