@@ -52,7 +52,7 @@ module.exports = function(app) {
   });
   // Creates a Thread
   app.post("/api/new", (req, res) => {
-    Thread.create({
+    db.Thread.create({
       topic: req.body.topic,
       userName: req.body.userName,
       author: req.body.author
@@ -62,13 +62,13 @@ module.exports = function(app) {
   });
   // Get thread
   app.get("/thread", (req, res) => {
-    Thread.findAll({}, (err, thread) => {
+    db.Thread.findAll({}, (err, thread) => {
       res.send(thread);
     });
   });
   // get author of thread
   app.get("/api/author:author", (req, res) => {
-    Thread.findAll({
+    db.Thread.findAll({
       where: {
         author: req.params.author
       }
@@ -78,7 +78,7 @@ module.exports = function(app) {
   });
 
   app.get("api/topic/:topic", (req, res) => {
-    Thread.findAll({
+    db.Thread.findAll({
       where: {
         topic: req.params.topic
       }
@@ -87,7 +87,7 @@ module.exports = function(app) {
     });
   });
   app.get("/api/userName/:userName", (req, res) => {
-    Thread.findAll({
+    db.Thread.findAll({
       where: {
         userName: req.params.userName
       }
@@ -96,7 +96,7 @@ module.exports = function(app) {
     });
   });
   app.post("/api/new", (req, res) => {
-    Message.create({
+    db.Message.create({
       body: req.body.body,
       author: req.body.author
     }).then(results => {
@@ -104,7 +104,7 @@ module.exports = function(app) {
     });
   });
   app.get("/api/author:author", (req, res) => {
-    Message.findAll({
+    db.Message.findAll({
       where: {
         author: req.params.author
       }
@@ -113,7 +113,7 @@ module.exports = function(app) {
     });
   });
   app.get("/api/body:body", (req, res) => {
-    Message.findAll({
+    db.Message.findAll({
       where: {
         body: req.params.body
       }
@@ -122,7 +122,7 @@ module.exports = function(app) {
     });
   });
   app.delete("/api/thread/:userName", (req, res) => {
-    Thread.destroy({
+    db.Thread.destroy({
       where: {
         userName: req.params.userName
       }
