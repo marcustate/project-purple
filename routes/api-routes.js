@@ -50,84 +50,35 @@ module.exports = function(app) {
       });
     }
   });
-  // Creates a Thread
-  app.post("/api/new", (req, res) => {
-    db.Thread.create({
-      topic: req.body.topic,
-      userName: req.body.userName,
-      author: req.body.author
-    }).then(function(results) {
-      res.json(results);
-    });
-  });
-  // Get thread
-  app.get("/thread", (req, res) => {
-    db.Thread.findAll({}, (err, thread) => {
-      res.send(thread);
-    });
-  });
-  // get author of thread
-  app.get("/api/author:author", (req, res) => {
-    db.Thread.findAll({
-      where: {
-        author: req.params.author
-      }
-    }).then(results => {
+  // Creates a new Thread in the database. This should occur when the user enters information in the new-thread.html page.
+  app.post("/api/new/thread", (req, res) => {
+    const { title, body } = req.body;
+    db.Thread.create({ title, body }).then(function(results) {
       res.json(results);
     });
   });
 
-  app.get("api/topic/:topic", (req, res) => {
-    db.Thread.findAll({
-      where: {
-        topic: req.params.topic
-      }
-    }).then(results => {
-      res.json(results);
+  // Get a single thread by id from the database. This should occur when the user clicks a specific thread in the list of all threads on members.html page
+  app.get("/thread/:id", (req, res) => {
+    db.Thread.findByPk(req.params.id).then(thread => {
+      res.json(thread);
     });
   });
-  app.get("/api/userName/:userName", (req, res) => {
-    db.Thread.findAll({
-      where: {
-        userName: req.params.userName
-      }
-    }).then(results => {
-      res.json(results);
-    });
+
+  app.get("/threads", (req, res) => {
+    db.Thread.findAll({})
+      .then(threads => {
+        res.json(threads);
+      })
+      .catch(err => {
+        throw new Error(err);
+      });
   });
-  app.post("/api/new", (req, res) => {
-    db.Message.create({
-      body: req.body.body,
-      author: req.body.author
-    }).then(results => {
+
+  // Get all messages in a thread.
+  app.get("/messages", (req, res) => {
+    db.Message.findAll({}).then(results => {
       res.json(results);
-    });
-  });
-  app.get("/api/author:author", (req, res) => {
-    db.Message.findAll({
-      where: {
-        author: req.params.author
-      }
-    }).then(results => {
-      res.json(results);
-    });
-  });
-  app.get("/api/body:body", (req, res) => {
-    db.Message.findAll({
-      where: {
-        body: req.params.body
-      }
-    }).then(results => {
-      res.json(results);
-    });
-  });
-  app.delete("/api/thread/:userName", (req, res) => {
-    db.Thread.destroy({
-      where: {
-        userName: req.params.userName
-      }
-    }).then(() => {
-      res.end();
     });
   });
 };
