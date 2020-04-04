@@ -1,7 +1,6 @@
 // Requiring our models and passport as we've configured it
 const db = require("../models");
 const passport = require("../config/passport");
-
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
@@ -13,7 +12,6 @@ module.exports = function(app) {
       id: req.user.id
     });
   });
-
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
   // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
   // otherwise send back an error
@@ -29,13 +27,11 @@ module.exports = function(app) {
         res.status(401).json(err);
       });
   });
-
   // Route for logging user out
   app.get("/logout", function(req, res) {
     req.logout();
     res.redirect("/");
   });
-
   // Route for getting some data about our user to be used client side
   app.get("/api/user_data", function(req, res) {
     if (!req.user) {
@@ -50,84 +46,32 @@ module.exports = function(app) {
       });
     }
   });
-  // Creates a Thread
-  app.post("/api/new", (req, res) => {
-    db.Thread.create({
-      topic: req.body.topic,
-      userName: req.body.userName,
-      author: req.body.author
-    }).then(function(results) {
+  // Creates a new Thread in the database. This should occur when the user enters information in the new-thread.html page.
+  app.post("/api/new/thread", (req, res) => {
+    const { title, body } = req.body;
+    db.Thread.create({ title, body }).then(function(results) {
       res.json(results);
     });
   });
-  // Get thread
-  app.get("/thread", (req, res) => {
-    db.Thread.findAll({}, (err, thread) => {
-      res.send(thread);
+  // Get a single thread by id from the database. This should occur when the user clicks a specific thread in the list of all threads on members.html page
+  app.get("/thread/:id", (req, res) => {
+    db.Thread.findByPk(req.params.id).then(thread => {
+      res.json(thread);
     });
   });
-  // get author of thread
-  app.get("/api/author:author", (req, res) => {
-    db.Thread.findAll({
-      where: {
-        author: req.params.author
-      }
-    }).then(results => {
+  app.get("/threads", (req, res) => {
+    db.Thread.findAll({})
+      .then(threads => {
+        res.json(threads);
+      })
+      .catch(err => {
+        throw new Error(err);
+      });
+  });
+  // Get all messages in a thread.
+  app.get("/messages", (req, res) => {
+    db.Message.findAll({}).then(results => {
       res.json(results);
-    });
-  });
-
-  app.get("api/topic/:topic", (req, res) => {
-    db.Thread.findAll({
-      where: {
-        topic: req.params.topic
-      }
-    }).then(results => {
-      res.json(results);
-    });
-  });
-  app.get("/api/userName/:userName", (req, res) => {
-    db.Thread.findAll({
-      where: {
-        userName: req.params.userName
-      }
-    }).then(results => {
-      res.json(results);
-    });
-  });
-  app.post("/api/new", (req, res) => {
-    db.Message.create({
-      body: req.body.body,
-      author: req.body.author
-    }).then(results => {
-      res.json(results);
-    });
-  });
-  app.get("/api/author:author", (req, res) => {
-    db.Message.findAll({
-      where: {
-        author: req.params.author
-      }
-    }).then(results => {
-      res.json(results);
-    });
-  });
-  app.get("/api/body:body", (req, res) => {
-    db.Message.findAll({
-      where: {
-        body: req.params.body
-      }
-    }).then(results => {
-      res.json(results);
-    });
-  });
-  app.delete("/api/thread/:userName", (req, res) => {
-    db.Thread.destroy({
-      where: {
-        userName: req.params.userName
-      }
-    }).then(() => {
-      res.end();
     });
   });
 };
