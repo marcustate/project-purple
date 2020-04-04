@@ -26,7 +26,5 @@
     "semi": ["error", "always"],
     "prettier/prettier": "error"
   },
-  "parserOptions": {
-      "ecmaVersion": 2020
-  }
+  "parserOptions": {"ecmaVersion": 2017}
 }
