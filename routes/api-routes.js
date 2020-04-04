@@ -53,12 +53,20 @@ module.exports = function(app) {
       res.json(results);
     });
   });
+<<<<<<< HEAD
+=======
+
+>>>>>>> e9d2fb323c9165a9b7366a93a1ea2d7ffd5ef7b4
   // Get a single thread by id from the database. This should occur when the user clicks a specific thread in the list of all threads on members.html page
   app.get("/thread/:id", (req, res) => {
     db.Thread.findByPk(req.params.id).then(thread => {
       res.json(thread);
     });
   });
+<<<<<<< HEAD
+=======
+
+>>>>>>> e9d2fb323c9165a9b7366a93a1ea2d7ffd5ef7b4
   app.get("/threads", (req, res) => {
     db.Thread.findAll({})
       .then(threads => {
@@ -68,6 +76,10 @@ module.exports = function(app) {
         throw new Error(err);
       });
   });
+<<<<<<< HEAD
+=======
+
+>>>>>>> e9d2fb323c9165a9b7366a93a1ea2d7ffd5ef7b4
   // Get all messages in a thread.
   app.get("/messages", (req, res) => {
     db.Message.findAll({}).then(results => {
