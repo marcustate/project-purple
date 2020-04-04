@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
-  const Thread = sequelize.define("Message", {
-    // mirror Message with "Message"
+  const Thread = sequelize.define("Thread", {
+    // mirror Thread with "Thread"
     author: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -15,7 +15,7 @@ module.exports = function(sequelize, DataTypes) {
         len: [1]
       }
     },
-    title: {
+    topic: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
