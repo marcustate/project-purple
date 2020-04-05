@@ -49,26 +49,15 @@ module.exports = function(app) {
   // Creates a new Thread in the database. This should occur when the user enters information in the new-thread.html page.
   app.post("/api/new/thread", (req, res) => {
     const { title, body } = req.body;
-    db.Thread.create({ title, body }).then(function(results) {
-      res.json(results);
+    db.Thread.create({ title, body }).then(function(newThread) {
+      res.json(newThread);
     });
   });
-<<<<<<< HEAD
-=======
-
->>>>>>> e9d2fb323c9165a9b7366a93a1ea2d7ffd5ef7b4
-  // Get a single thread by id from the database. This should occur when the user clicks a specific thread in the list of all threads on members.html page
-  app.get("/thread/:id", (req, res) => {
-    db.Thread.findByPk(req.params.id).then(thread => {
-      res.json(thread);
-    });
-  });
-<<<<<<< HEAD
-=======
-
->>>>>>> e9d2fb323c9165a9b7366a93a1ea2d7ffd5ef7b4
+  // Gets all threads in the database and orders them by descending id. This is the list of threads that should populate on members.html page
   app.get("/threads", (req, res) => {
-    db.Thread.findAll({})
+    db.Thread.findAll({
+      order: [["createdAt", "DESC"]]
+    })
       .then(threads => {
         res.json(threads);
       })
@@ -76,14 +65,26 @@ module.exports = function(app) {
         throw new Error(err);
       });
   });
-<<<<<<< HEAD
-=======
-
->>>>>>> e9d2fb323c9165a9b7366a93a1ea2d7ffd5ef7b4
+  // Get a single thread by id from the database. This should occur when the user clicks a specific thread in the list of all threads on members.html page
+  app.get("/thread/:id", (req, res) => {
+    db.Thread.findByPk(req.params.id).then(thread => {
+      res.json(thread);
+    });
+  });
+  app.post("/api/new/message", (req, res) => {
+    const { body } = req.body;
+    db.Message.create({ body })
+      .then(newMessage => {
+        res.json(newMessage);
+      })
+      .catch(err => {
+        throw new Error(err);
+      });
+  });
   // Get all messages in a thread.
   app.get("/messages", (req, res) => {
-    db.Message.findAll({}).then(results => {
-      res.json(results);
+    db.Message.findAll({}).then(messages => {
+      res.json(messages);
     });
   });
 };

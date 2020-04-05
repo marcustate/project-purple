@@ -1,13 +1,11 @@
 module.exports = function(sequelize, DataTypes) {
-  const Thread = sequelize.define("Thread", {
+  const Thread = sequelize.define("threads", {
     // mirror Thread with "Thread"
     title: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         len: [1 - 30]
-<<<<<<< HEAD
-=======
       }
     },
     body: {
@@ -15,9 +13,12 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       validate: {
         len: [1 - 240]
->>>>>>> e9d2fb323c9165a9b7366a93a1ea2d7ffd5ef7b4
       }
     }
   });
+  Thread.associate = models => {
+    Thread.belongsTo(models.user, { foreignKey: "created_by" });
+    Thread.hasMany(models.messages, { foreignKey: "thread_id" });
+  };
   return Thread;
 };

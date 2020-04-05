@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-  var Message = sequelize.define("Message", {
+  var Message = sequelize.define("messages", {
     // mirror Message with "Message"
     body: {
       type: DataTypes.TEXT,
@@ -9,5 +9,9 @@ module.exports = function(sequelize, DataTypes) {
       }
     }
   });
+  Message.associate = models => {
+    Message.belongsTo(models.threads, { foreignKey: "thread_id" });
+    Message.belongsTo(models.user, { foreignKey: "author_id" });
+  };
   return Message;
 };
