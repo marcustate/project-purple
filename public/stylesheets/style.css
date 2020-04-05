@@ -3,7 +3,7 @@ form.login {
 	margin-top: 50px;
 }
 
-#form-margin-fix {
+.form-margin-fix {
 	margin-top: 50px;
 }
 
@@ -16,6 +16,22 @@ nav {
 	background-color: #3d1d4a;
 }
 
+a {
+	color: white;
+}
+
+a:hover {
+	text-decoration: none;
+	/* color: #922392; */
+	color: #4aa51e;
+}
+
+a:focus {
+	text-decoration: none;
+	/* color: #922392; */
+	color: #4aa51e;
+}
+
 .brand-name {
 	font-size: 25px;
 	font-family: "Ultra", serif;
@@ -24,11 +40,12 @@ nav {
 .my-button {
 	font-family: "Jua", sans-serif;
 	border-radius: 70px;
+	background-color: #18111b;
 }
 
 .my-button:hover {
 	border: transparent;
-	background-color: #18111b;
+	background-color: #3d1d4a;
 	border-color: white;
 	border: solid 1px white;
 	text-decoration: none;
@@ -38,8 +55,16 @@ nav {
 .my-button:focus {
 	text-decoration: none;
 	color: white;
-	background-color: #18111b;
+	/* background-color: #3d1d4a; */
 	outline: 0;
+}
+
+.my-button-bg {
+	background-color: #3d1d4a;
+}
+
+.my-button-bg:hover {
+	background-color: #18111b;
 }
 
 .page-title {
@@ -62,7 +87,7 @@ nav {
 	border-radius: 70px;
 }
 
-#new-thread-button {
+.new-button {
 	/* border: solid 2px #435b25; */
 	padding: 0;
 	margin: 0;
@@ -82,12 +107,17 @@ nav {
 	padding-left: 10px;
 }
 
-#thread-list {
-	max-width: 85%;
-	margin: auto;
-	margin-top: 20px;
+.discussion p {
+	margin-left: 15px;
 }
 
-.thread {
-	background-color: #3d1d4a;
+.list-style {
+	max-width: 85%;
+	margin: auto;
+	margin-top: 10px;
+}
+
+.list-top {
+	background-color: #27411a;
+	margin-top: 50px;
 }

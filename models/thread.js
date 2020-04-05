@@ -16,5 +16,11 @@ module.exports = function(sequelize, DataTypes) {
       }
     }
   });
+
+  Thread.associate = models => {
+    Thread.belongsTo(models.User, { foreignKey: "created_by" });
+    Thread.hasMany(models.Message, { foreignKey: "thread_id" });
+  };
+
   return Thread;
 };
