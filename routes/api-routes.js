@@ -50,12 +50,26 @@ module.exports = function(app) {
       });
     }
   });
+
   // Creates a new Thread in the database. This should occur when the user enters information in the new-thread.html page.
   app.post("/api/new/thread", (req, res) => {
     const { title, body } = req.body;
-    db.Thread.create({ title, body }).then(function(results) {
-      res.json(results);
+    db.Thread.create({ title, body }).then(function(newThread) {
+      res.json(newThread);
     });
+  });
+
+  // Gets all threads in the database and orders them by descending id. This is the list of threads that should populate on members.html page
+  app.get("/threads", (req, res) => {
+    db.Thread.findAll({
+      order: [["createdAt", "DESC"]]
+    })
+      .then(threads => {
+        res.json(threads);
+      })
+      .catch(err => {
+        throw new Error(err);
+      });
   });
 
   // Get a single thread by id from the database. This should occur when the user clicks a specific thread in the list of all threads on members.html page
@@ -65,10 +79,11 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/threads", (req, res) => {
-    db.Thread.findAll({})
-      .then(threads => {
-        res.json(threads);
+  app.post("/api/new/message", (req, res) => {
+    const { body } = req.body;
+    db.Message.create({ body })
+      .then(newMessage => {
+        res.json(newMessage);
       })
       .catch(err => {
         throw new Error(err);
@@ -77,8 +92,8 @@ module.exports = function(app) {
 
   // Get all messages in a thread.
   app.get("/messages", (req, res) => {
-    db.Message.findAll({}).then(results => {
-      res.json(results);
+    db.Message.findAll({}).then(messages => {
+      res.json(messages);
     });
   });
 };

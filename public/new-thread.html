@@ -5,68 +5,87 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link
-			rel="stylesheet"
-			href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css"
-		/>
-		<link
 			href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
 			rel="stylesheet"
-        />
-        <link href="https://fonts.googleapis.com/css2?family=Jua&family=Ultra&display=swap" rel="stylesheet">
-        <link rel="icon" href="img/plum.png">
+		/>
+		<link
+			rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+			integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+			crossorigin="anonymous"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Jua&family=Ultra&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="icon" href="img/plum.png" />
 		<link href="stylesheets/style.css" rel="stylesheet" />
 	</head>
 
 	<body>
-		<nav
-			class="flex items-center justify-between flex-wrap p-0"
-		>
+		<nav class="flex items-center justify-between flex-wrap p-0">
 			<div class="flex items-center text-white mr-6">
-                <img src="img/plum.png" class="fill-current"
-                width="95"
-                height="95"
-                viewBox="0 0 54 54">
-				<span class="brand-name"
-					>plumm.it</span
-				>
+				<img
+					src="img/plum.png"
+					class="fill-current"
+					width="95"
+					height="95"
+					viewBox="0 0 54 54"
+				/>
+				<span class="brand-name">plumm.it</span>
+			</div>
+			<a
+				href="#"
+				class="inline-block px-4 py-2 leading-none border text-white mt-4 mr-6 lg:mt-0 my-button"
+				id="logout-button"
+				>logout</a
+			>
 		</nav>
 		<div class="container">
 			<div class="row">
-				<div class="col-md-6 col-md-offset-3">
+				<div class="col-md-6 mx-auto">
 					<h2 class="page-title">new thread</h2>
-					<form id="form-margin-fix">
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Title</label>
-                            <input
-                                type="name"
-                                class="form-control"
-                                aria-describedby="emailHelp"
-                                placeholder=""
-                            />
-                        </div>
-    
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Body</label>
-                            <textarea type="text" rows="7" class="resize-none form-control"> </textarea>
-                        </div>
-    
-                        <div
-                        style="display: none"
-                        id="alert"
-                        class="alert alert-danger"
-                        role="alert"
-                    >
-                        <span
-                            class="glyphicon glyphicon-exclamation-sign"
-                            aria-hidden="true"
-                        ></span>
-                        <span class="sr-only">Error:</span>
-                        <span class="msg"></span>
-                    </div>
-                    <button type="submit" class="btn btn-default">
-                        Create
-                    </button>
-                    </form>
+					<form class="form-margin-fix">
+						<div class="form-group">
+							<label for="exampleInputEmail1">Title</label>
+							<input
+								type="name"
+								class="form-control"
+								id="thread-title-input"
+							/>
+						</div>
+
+						<div class="form-group">
+							<label for="exampleInputPassword1">Body</label>
+							<textarea
+								type="text"
+								rows="7"
+								class="resize-none form-control"
+								id="thread-body-input"
+							></textarea>
+						</div>
+
+						<div
+							style="display: none"
+							id="alert"
+							class="alert alert-danger"
+							role="alert"
+						>
+							<span
+								class="glyphicon glyphicon-exclamation-sign"
+								aria-hidden="true"
+							></span>
+							<span class="sr-only">Error:</span>
+							<span class="msg"></span>
+						</div>
+						<button
+							type="submit"
+							class="leading-none border px-4 py-2 my-button my-button-bg"
+							id="create-thread-button"
+						>
+							create
+						</button>
+					</form>
 				</div>
 			</div>
 		</div>
