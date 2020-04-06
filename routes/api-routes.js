@@ -1,7 +1,6 @@
 // Requiring our models and passport as we've configured it
 const db = require("../models");
 const passport = require("../config/passport");
-
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
@@ -13,7 +12,6 @@ module.exports = function(app) {
       id: req.user.id
     });
   });
-
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
   // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
   // otherwise send back an error
@@ -29,13 +27,11 @@ module.exports = function(app) {
         res.status(401).json(err);
       });
   });
-
   // Route for logging user out
   app.get("/logout", function(req, res) {
     req.logout();
     res.redirect("/");
   });
-
   // Route for getting some data about our user to be used client side
   app.get("/api/user_data", function(req, res) {
     if (!req.user) {
@@ -58,7 +54,6 @@ module.exports = function(app) {
       res.json(newThread);
     });
   });
-
   // Gets all threads in the database and orders them by descending id. This is the list of threads that should populate on members.html page
   app.get("/threads", (req, res) => {
     db.Thread.findAll({
@@ -71,14 +66,12 @@ module.exports = function(app) {
         throw new Error(err);
       });
   });
-
   // Get a single thread by id from the database. This should occur when the user clicks a specific thread in the list of all threads on members.html page
   app.get("/thread/:id", (req, res) => {
     db.Thread.findByPk(req.params.id).then(thread => {
       res.json(thread);
     });
   });
-
   app.post("/api/new/message", (req, res) => {
     const { body } = req.body;
     db.Message.create({ body })
@@ -89,7 +82,6 @@ module.exports = function(app) {
         throw new Error(err);
       });
   });
-
   // Get all messages in a thread.
   app.get("/messages", (req, res) => {
     db.Message.findAll({}).then(messages => {
