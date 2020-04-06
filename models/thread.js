@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-  const Thread = sequelize.define("threads", {
+  const Thread = sequelize.define("Thread", {
     // mirror Thread with "Thread"
     title: {
       type: DataTypes.STRING,
@@ -17,8 +17,8 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
   Thread.associate = models => {
-    Thread.belongsTo(models.user, { foreignKey: "created_by" });
-    Thread.hasMany(models.messages, { foreignKey: "thread_id" });
+    Thread.belongsTo(models.User, { foreignKey: "created_by" });
+    Thread.hasMany(models.Message, { foreignKey: "thread_id" });
   };
   return Thread;
 };

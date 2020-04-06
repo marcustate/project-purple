@@ -46,6 +46,7 @@ module.exports = function(app) {
       });
     }
   });
+
   // Creates a new Thread in the database. This should occur when the user enters information in the new-thread.html page.
   app.post("/api/new/thread", (req, res) => {
     const { title, body } = req.body;
