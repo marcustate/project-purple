@@ -11,13 +11,3 @@ $(document).ready(function() {
     location.replace(url);
   });
 });
-
-$(() => {
-  $("#send").click(() => {
-    sendThread({
-      name: $("#name").val(),
-      thread: $("#thread").val()
-    });
-  });
-  getThreads();
-});
