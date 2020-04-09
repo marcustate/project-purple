@@ -1,3 +1,0 @@
-questions
-
-what are we gonna do to these for colums not to show null?

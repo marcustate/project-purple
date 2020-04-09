@@ -43,13 +43,13 @@
 		</nav>
 
 		<div class="container">
-			<div class="row welcome">
+			<div class="row welcome mb-5">
 				<div
 					class="col-12 col-md-8 text-center md:text-left d-flex justify-content-center justify-content-md-start"
 				>
 					<h2 class="text-white leading-none px-4 py-2">
 						<!-- The span below displays the user that's logged in -->
-						welcome<span class="member-name"></span>
+						welcome <span class="member-name"></span>
 					</h2>
 				</div>
 				<div
@@ -59,62 +59,83 @@
 						class="leading-none border px-4 py-2 my-button new-button"
 						id="new-thread-button"
 					>
-						new thread
+						please be kind
 					</button>
 				</div>
 			</div>
 
-			<div class="container">
-				<div class="row welcome list-top list-style">
-					<div
-						class="col-6 text-center md:text-left d-flex justify-content-center justify-content-md-start"
-					>
-						<p>author</p>
-					</div>
-					<div
-						class="col-6 d-flex justify-content-md-end justify-content-center"
-					>
-						<p>title</p>
+			<div class="comments">
+				<div class="row welcome discussion list-style">
+					<div class="col-12">
+						<div class="row">
+							<p class="text-white leading-none px-4 py-2">
+								<!-- placeholder for any comments added to a thread-->
+								Placeholder<span class="member-name"></span>
+							</p>
+						</div>
+						<div class="row">
+							<p class="text-white leading-none px-4 py-2">
+								Lorem ipsum dolor sit amet, consectetuer
+								adipiscing elit. Aenean commodo ligula eget
+								dolor. Aenean massa. Cum sociis natoque
+								penatibus et magnis dis parturient montes,
+								pellentesque eu, pretium quis, sem.
+							</p>
+						</div>
 					</div>
 				</div>
+				<div class="row welcome discussion list-style">
+					<div class="col-12">
+						<div class="row">
+							<p class="text-white leading-none px-4 py-2">
+								<!-- placeholder for any comments added to a thread-->
+								Placeholder<span class="member-name"></span>
+							</p>
+						</div>
+						<div class="row">
+							<p class="text-white leading-none px-4 py-2">
+								Lorem ipsum dolor sit amet, consectetuer
+								adipiscing elit.
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6 mx-auto">
+						<form id="comment-form" class="form-margin-fix">
+							<div class="form-group">
+								<label>Add Comment</label>
+								<textarea
+									type="text"
+									rows="5"
+									class="resize-none form-control"
+									id="comment-input"
+								></textarea>
+							</div>
 
-				<!-- placeholder thread links below.  -->
-				<a href="#" class="row welcome list-style" id="thread-list">
-					<div
-						class="col-6 text-center md:text-left d-flex justify-content-center justify-content-md-start"
-					>
-						<p>brovid-19@cdc.gov</p>
+							<div
+								style="display: none"
+								id="alert"
+								class="alert alert-danger"
+								role="alert"
+							>
+								<span
+									class="glyphicon glyphicon-exclamation-sign"
+									aria-hidden="true"
+								></span>
+								<span class="sr-only">Error:</span>
+								<span class="msg"></span>
+							</div>
+							<button
+								type="submit"
+								class="leading-none border px-4 py-2 mb-5 my-button my-button-bg"
+								id="reply-button"
+							>
+								reply
+							</button>
+						</form>
 					</div>
-					<div
-						class="col-6 d-flex justify-content-md-end justify-content-center"
-					>
-						<p>Inappropriate Pandemic Jokes</p>
-					</div>
-				</a>
-				<a href="#" class="row welcome list-style" id="thread-list">
-					<div
-						class="col-6 text-center md:text-left d-flex justify-content-center justify-content-md-start"
-					>
-						<p>girthquake69@hotmale.com</p>
-					</div>
-					<div
-						class="col-6 d-flex justify-content-md-end justify-content-center"
-					>
-						<p>That Drumstick Story from Reddit(look it up)</p>
-					</div>
-				</a>
-				<a href="#" class="row welcome list-style" id="thread-list">
-					<div
-						class="col-6 text-center md:text-left d-flex justify-content-center justify-content-md-start"
-					>
-						<p>thomasthetroll@haha.com</p>
-					</div>
-					<div
-						class="col-6 d-flex justify-content-md-end justify-content-center"
-					>
-						<p>lol @ Marcus. Thomas rules</p>
-					</div>
-				</a>
+				</div>
 			</div>
 		</div>
 
